@@ -20,7 +20,7 @@ const PaginationButtonsList = (props) => {
             btn1.classList.add("active-btn");
         }
         if(btnClicked) {
-            btn1.classList.remove("activer-btn");
+            btn1.classList.remove("active-btn");
         }
  
         }
