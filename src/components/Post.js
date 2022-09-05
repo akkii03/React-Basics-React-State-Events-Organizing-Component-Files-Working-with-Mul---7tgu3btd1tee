@@ -1,4 +1,5 @@
 import React from 'react'
+// destructure thing 
 const Post = ({title,body,id}) => {
     return (
         <div className="post" key={"post"+id}>
