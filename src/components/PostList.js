@@ -11,7 +11,6 @@ const PostList = () => {
     useEffect(()=>{
         setIsLoading(true);
         fetchPosts(page,limit).then((res)=>{
-            console.log('res in useEffect',res);
             setIsLoading(false);
             setPosts([...res.data]); 
         });
@@ -19,7 +18,6 @@ const PostList = () => {
 
     function handleChange(e)
     {
-        console.log('event triggered form pagination',e.target);
         setPage(e.target.value);
     }
 

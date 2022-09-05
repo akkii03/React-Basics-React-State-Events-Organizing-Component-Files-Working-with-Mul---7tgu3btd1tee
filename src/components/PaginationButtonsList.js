@@ -25,6 +25,9 @@ const PaginationButtonsList = (props) => {
  
         }
         
+        useEffect(()=>{
+            document.getElementById("button-1").classList("active-btn");
+        },[])
 
     function buttonClick(e)
     {
@@ -41,7 +44,6 @@ const PaginationButtonsList = (props) => {
     return (
         <div className="pagination-buttons-list">
             {createButtons()}
-            {/* {document.getElementById("button-1").classList.add('active-btn')};  */}
            
            
         </div>
