@@ -1,51 +1,31 @@
-import React, { useState,useEffect } from 'react'
+import React, { useEffect }  from 'react'
 const PaginationButtonsList = (props) => {
-    const noOfPages = 20;
-    let buttonsArr=[];
-    function createButtons()
-    {
-        
-        for(let i=0;i<noOfPages;i++)
-        {
-            buttonsArr.push(<button id={'button-'+(i+1)} value={i+1} onClick={buttonClick}>{i+1}</button>);
-            
+    // const[pageNum,setPageNum] = useState(1)
+    const noOfPages = 20            /*to calculate pages => (posts/limit) like here 100/5*/
+    function createButtons () {
+        let buttonArr = [];
+        for(let i=0; i<noOfPages; i++) {
+            buttonArr.push(<button key={"btn"+i} id={'button-'+(i+1)} value={i+1} onClick={clickButton}>{i+1}</button>)         
+            /*we are creating button here we can use createElement as well*/
         }
-        return buttonsArr;
+        return buttonArr;
     }
-
-    const btn1 = document.getElementById("button-1");
-    const [btnClicked,setClicked] = useState(false);
-    if(btn1!=null ) {
-        if(!btnClicked) {
-            btn1.classList.add("active-btn");
-        }
-        if(btnClicked) {
-            btn1.classList.remove("active-btn");
-        }
- 
-        }
-        
-        useEffect(()=>{
-            document.getElementById("button-1").classList("active-btn");
-        },[])
-
-    function buttonClick(e)
-    {
-        setClicked(true)
-        const redButtons = document.querySelectorAll('.active-btn');
+    useEffect(()=>{
+        document.getElementById("button-1").classList.add("active-btn")
+    },[])
+    
+    function clickButton (event) {
+        let redButtons = document.querySelectorAll('.active-btn');
         redButtons.forEach((button)=>{
             button.classList.remove('active-btn');
         })
-        
-        const button = document.getElementById('button-'+e.target.value);
+        let button = document.getElementById('button-'+event.target.value);
         button.classList.add('active-btn');
-        props.handleChange(e);
+        props.handleChange(event);
     }
     return (
         <div className="pagination-buttons-list">
-            {createButtons()}
-           
-           
+        {createButtons()}
         </div>
     )
 }
